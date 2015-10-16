@@ -315,7 +315,7 @@ def notebook(preprocessor, tag, markup):
                             **subcell_kwarg)
 
     # read and parse the notebook
-    with open(nb_path) as f:
+    with open(nb_path, encoding="utf-8") as f:
         nb_text = f.read()
         if IPYTHON_VERSION < 3:
             nb_json = IPython.nbformat.current.reads_json(nb_text)
@@ -336,7 +336,7 @@ def notebook(preprocessor, tag, markup):
                            for css_line in resources['inlining']['css'])
         header += JS_INCLUDE
 
-        with open('_nb_header.html', 'w') as f:
+        with open('_nb_header.html', 'w', encoding="utf-8") as f:
             f.write(header)
         notebook.header_saved = True
 
